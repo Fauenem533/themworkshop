@@ -21,46 +21,23 @@ export function ProductCard({ product, index }: Props) {
   return (
     <motion.article
       className={`product-card ${sale ? 'is-sale' : ''}`}
-      initial={{ opacity: 0, y: 48, rotateX: 8 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: 0.85,
-        delay: index * 0.08,
+        duration: 0.4,
+        delay: Math.min(index * 0.04, 0.24),
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -8 }}
     >
-      <Link
-        to={`/produkt/${product.id}`}
-        className="product-card-link cursor-grow"
-        data-cursor="View"
-      >
+      <Link to={`/produkt/${product.id}`} className="product-card-link">
         <div className="product-card-media">
-          {sale && (
-            <motion.span
-              className="sale-badge"
-              initial={{ scale: 0.7, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 380, damping: 16, delay: 0.2 }}
-            >
-              −{percent ?? ''}%
-            </motion.span>
-          )}
-          <motion.img
-            layoutId={`image-${product.id}`}
+          {sale && <span className="sale-badge">−{percent ?? ''}%</span>}
+          <img
             src={resolveAsset(product.images[0])}
             alt={product.name}
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            loading="lazy"
           />
-          <motion.div
-            className="product-card-veil"
-            initial={false}
-            whileHover={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
-          />
-          <div className="product-card-shine" aria-hidden />
         </div>
         <div className="product-card-meta">
           <div>

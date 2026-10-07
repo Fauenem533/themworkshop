@@ -1,21 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { formatPrice, type Product } from '../data/products'
+import { formatPrice, resolveAsset, type Product } from '../data/products'
 import { useProducts } from '../context/ProductsContext'
 import './Admin.css'
 
 const IMAGE_OPTIONS = [
-  '/products/tw-hero.jpg',
-  '/products/tw-01.jpg',
-  '/products/tw-02.jpg',
-  '/products/tw-03.jpg',
-  '/products/tw-04.jpg',
-  '/products/tw-05.jpg',
-  '/products/tw-06.jpg',
-  '/products/tw-07.jpg',
-  '/products/tw-08.jpg',
-]
+  'products/tw-hero.jpg',
+  'products/tw-01.jpg',
+  'products/tw-02.jpg',
+  'products/tw-03.jpg',
+  'products/tw-04.jpg',
+  'products/tw-05.jpg',
+  'products/tw-06.jpg',
+  'products/tw-07.jpg',
+  'products/tw-08.jpg',
+].map((path) => resolveAsset(path))
 
 export function Admin() {
   const {
@@ -72,7 +72,7 @@ export function Admin() {
       price: Number.isFinite(editing.price) ? Math.max(0, editing.price) : 0,
       images: editing.images.filter(Boolean).length
         ? editing.images.filter(Boolean)
-        : ['/products/tw-01.jpg'],
+        : [resolveAsset('products/tw-01.jpg')],
       specs: editing.specs.filter((s) => s.label.trim() || s.value.trim()),
     }
     upsert(cleaned)
@@ -188,7 +188,11 @@ export function Admin() {
             {filtered.map((product) => (
               <tr key={product.id}>
                 <td>
-                  <img src={product.images[0]} alt="" className="admin-thumb" />
+                  <img
+                    src={resolveAsset(product.images[0])}
+                    alt=""
+                    className="admin-thumb"
+                  />
                 </td>
                 <td>
                   <strong>{product.name}</strong>
@@ -374,7 +378,7 @@ export function Admin() {
                           })
                         }}
                       >
-                        <img src={src} alt="" />
+                        <img src={resolveAsset(src)} alt="" />
                       </button>
                     )
                   })}

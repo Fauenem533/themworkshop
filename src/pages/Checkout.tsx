@@ -9,7 +9,7 @@ import {
   paymentMethods,
 } from '../components/PaymentMethods'
 import { useCart } from '../context/CartContext'
-import { formatPrice } from '../data/products'
+import { formatPrice, resolveAsset } from '../data/products'
 import './Checkout.css'
 
 export function Checkout() {
@@ -193,7 +193,10 @@ export function Checkout() {
               <ul>
                 {items.map((item) => (
                   <li key={item.product.id}>
-                    <img src={item.product.images[0]} alt="" />
+                    <img
+                      src={resolveAsset(item.product.images[0])}
+                      alt=""
+                    />
                     <div>
                       <strong>{item.product.name}</strong>
                       <div className="summary-qty">

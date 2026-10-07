@@ -27,7 +27,16 @@ export function salePercent(product: Product): number | null {
   return Math.round((1 - product.price / product.compareAtPrice) * 100)
 }
 
-const img = (...files: string[]) => files.map((f) => `/products/${f}`)
+/** Prefiksuje ścieżki assetów base path (GitHub Pages: /themworkshop/). */
+export function resolveAsset(path: string): string {
+  if (!path) return ''
+  if (/^(https?:|data:|blob:)/i.test(path)) return path
+  const base = import.meta.env.BASE_URL || '/'
+  if (path.startsWith(base)) return path
+  return `${base}${path.replace(/^\//, '')}`
+}
+
+const img = (...files: string[]) => files.map((f) => resolveAsset(`products/${f}`))
 
 /** Domyślna oferta — noże kuchenne warsztatu @themworkshop (Marek Kania). Ceny startowe do edycji w panelu. */
 export const defaultProducts: Product[] = [
@@ -211,7 +220,7 @@ export function createEmptyProduct(): Product {
     price: 0,
     category: 'Kuchenne',
     maker: 'themworkshop',
-    images: ['/products/tw-01.jpg'],
+    images: [resolveAsset('products/tw-01.jpg')],
     specs: [
       { label: 'Typ', value: '' },
       { label: 'Wykonanie', value: 'Handmade' },

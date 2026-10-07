@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { Product } from '../data/products'
-import { formatPrice, isOnSale, salePercent } from '../data/products'
+import {
+  formatPrice,
+  isOnSale,
+  resolveAsset,
+  salePercent,
+} from '../data/products'
 import './ProductCard.css'
 
 type Props = {
@@ -40,7 +45,7 @@ export function ProductCard({ product, index }: Props) {
           )}
           <motion.img
             layoutId={`image-${product.id}`}
-            src={product.images[0]}
+            src={resolveAsset(product.images[0])}
             alt={product.name}
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}

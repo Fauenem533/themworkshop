@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { formatPrice } from '../data/products'
+import { formatPrice, resolveAsset } from '../data/products'
 import { useCart } from '../context/CartContext'
 import './CartDrawer.css'
 
@@ -58,7 +58,10 @@ export function CartDrawer() {
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <div className="cart-item-media">
-                          <img src={item.product.images[0]} alt="" />
+                          <img
+                            src={resolveAsset(item.product.images[0])}
+                            alt=""
+                          />
                         </div>
                         <div className="cart-item-body">
                           <div className="cart-item-top">

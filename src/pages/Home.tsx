@@ -4,6 +4,7 @@ import { MagneticButton } from '../components/MagneticButton'
 import { PageTransition } from '../components/PageTransition'
 import { ProductCard } from '../components/ProductCard'
 import { useProducts } from '../context/ProductsContext'
+import { resolveAsset } from '../data/products'
 import './Home.css'
 
 export function Home() {
@@ -23,7 +24,7 @@ export function Home() {
       <section className="hero" ref={heroRef}>
         <motion.div className="hero-media" style={{ y: imageY, scale: imageScale }}>
           <img
-            src="/products/tw-hero.jpg"
+            src={resolveAsset('products/tw-hero.jpg')}
             alt="themworkshop — handmade kitchen knife"
           />
         </motion.div>
@@ -165,7 +166,10 @@ export function Home() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <img src="/products/tw-05.jpg" alt="Warsztat themworkshop" />
+            <img
+              src={resolveAsset('products/tw-05.jpg')}
+              alt="Warsztat themworkshop"
+            />
           </motion.div>
         </div>
       </section>

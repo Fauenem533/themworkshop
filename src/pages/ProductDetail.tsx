@@ -5,7 +5,12 @@ import { MagneticButton } from '../components/MagneticButton'
 import { PageTransition } from '../components/PageTransition'
 import { useCart } from '../context/CartContext'
 import { useProducts } from '../context/ProductsContext'
-import { formatPrice, isOnSale, salePercent } from '../data/products'
+import {
+  formatPrice,
+  isOnSale,
+  resolveAsset,
+  salePercent,
+} from '../data/products'
 import './ProductDetail.css'
 
 export function ProductDetail() {
@@ -47,7 +52,7 @@ export function ProductDetail() {
                 <motion.img
                   key={product.images[activeImage]}
                   layoutId={activeImage === 0 ? `image-${product.id}` : undefined}
-                  src={product.images[activeImage]}
+                  src={resolveAsset(product.images[activeImage])}
                   alt={`${product.name} — zdjęcie ${activeImage + 1}`}
                   initial={{ opacity: 0, scale: 1.04 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -64,7 +69,7 @@ export function ProductDetail() {
                   onClick={() => setActiveImage(i)}
                   aria-label={`Pokaż zdjęcie ${i + 1}`}
                 >
-                  <img src={src} alt="" />
+                  <img src={resolveAsset(src)} alt="" />
                 </button>
               ))}
             </div>

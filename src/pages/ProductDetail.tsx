@@ -71,7 +71,7 @@ export function ProductDetail() {
           </div>
 
           <div className="product-info">
-            <Link to="/#kolekcja" className="back-link">
+            <Link to="/" className="back-link">
               ← Kolekcja
             </Link>
             <p className="eyebrow">

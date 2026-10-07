@@ -73,7 +73,7 @@ export function Checkout() {
             {items.length === 0 ? (
               <div className="checkout-empty">
                 <p>Koszyk jest pusty — dodaj produkt, aby przejść dalej.</p>
-                <Link to="/#kolekcja" className="btn btn-primary">
+                <Link to="/" className="btn btn-primary">
                   Przejdź do kolekcji
                 </Link>
               </div>

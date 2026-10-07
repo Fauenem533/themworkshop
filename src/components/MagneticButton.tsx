@@ -48,8 +48,17 @@ export function MagneticButton({
   }
 
   if (href) {
+    const resolved =
+      href.startsWith('/') && !href.startsWith('//')
+        ? `${import.meta.env.BASE_URL}${href.slice(1)}`
+        : href
+
     return (
-      <motion.a ref={ref as React.RefObject<HTMLAnchorElement>} href={href} {...shared}>
+      <motion.a
+        ref={ref as React.RefObject<HTMLAnchorElement>}
+        href={resolved}
+        {...shared}
+      >
         {children}
       </motion.a>
     )

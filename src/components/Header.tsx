@@ -3,9 +3,11 @@ import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import './Header.css'
 
+const base = import.meta.env.BASE_URL
+
 const navItems = [
-  { to: '/#kolekcja', label: 'Kolekcja', kind: 'hash' as const },
-  { to: '/#o-marce', label: 'Warsztat', kind: 'hash' as const },
+  { to: `${base}#kolekcja`, label: 'Kolekcja', kind: 'hash' as const },
+  { to: `${base}#o-marce`, label: 'Warsztat', kind: 'hash' as const },
   { to: '/wyprzedaz', label: 'Wyprzedaż', kind: 'sale' as const },
   { to: '/checkout', label: 'Zamówienie', kind: 'link' as const },
   { to: '/admin', label: 'Admin', kind: 'link' as const },

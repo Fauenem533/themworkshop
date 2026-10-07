@@ -185,7 +185,7 @@ export function Home() {
 
 function LinkAdmin() {
   return (
-    <a href="/admin" style={{ color: 'inherit' }}>
+    <a href={`${import.meta.env.BASE_URL}admin`} style={{ color: 'inherit' }}>
       Panel admina
     </a>
   )

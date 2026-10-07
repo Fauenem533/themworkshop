@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { MagneticButton } from '../components/MagneticButton'
 import { PageTransition } from '../components/PageTransition'
 import { ProductCard } from '../components/ProductCard'
+import { StickyShowcase } from '../components/StickyShowcase'
 import { useProducts } from '../context/ProductsContext'
 import { resolveAsset } from '../data/products'
 import './Home.css'
@@ -119,20 +120,28 @@ export function Home() {
           transition={{ delay: 1.4 }}
         >
           <span />
-          Przewiń
+          Scroll Down
         </motion.div>
       </section>
 
+      <StickyShowcase products={products} />
+
       <section className="collection section" id="kolekcja">
         <div className="container">
-          <div className="section-head">
+          <motion.div
+            className="section-head"
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <p className="eyebrow">Kolekcja</p>
             <h2 className="display">Noże do kuchni.</h2>
             <p className="section-lead">
               Oferta warsztatu themworkshop — zdjęcia z Instagrama, ceny możesz
               zmieniać w panelu admina.
             </p>
-          </div>
+          </motion.div>
 
           <div className="product-grid">
             {products.map((product, index) => (
@@ -159,18 +168,7 @@ export function Home() {
               @themworkshop.
             </p>
           </motion.div>
-          <motion.div
-            className="brand-visual"
-            initial={{ opacity: 0, scale: 1.08 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <img
-              src={resolveAsset('products/tw-05.jpg')}
-              alt="Warsztat themworkshop"
-            />
-          </motion.div>
+          <BrandParallax />
         </div>
       </section>
 
@@ -184,6 +182,33 @@ export function Home() {
         </div>
       </footer>
     </PageTransition>
+  )
+}
+
+function BrandParallax() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['-12%', '12%'])
+  const scale = useTransform(scrollYProgress, [0, 1], [1.14, 1])
+
+  return (
+    <motion.div
+      className="brand-visual"
+      ref={ref}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <motion.img
+        style={{ y, scale }}
+        src={resolveAsset('products/tw-05.jpg')}
+        alt="Warsztat themworkshop"
+      />
+    </motion.div>
   )
 }
 

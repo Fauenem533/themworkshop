@@ -1,0 +1,12 @@
+.page-shell {
+  min-height: 100vh;
+}
+
+.page-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 160;
+  background: #12161a;
+  transform-origin: bottom center;
+  pointer-events: none;
+}

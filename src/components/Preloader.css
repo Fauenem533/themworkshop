@@ -1,0 +1,92 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  color: #f4f6f8;
+  pointer-events: all;
+  overflow: hidden;
+}
+
+.preloader-mask {
+  position: absolute;
+  inset: 0;
+  background: #12161a;
+  transform-origin: top center;
+}
+
+.preloader-label,
+.preloader-pct {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+}
+
+.preloader-label {
+  left: clamp(1.25rem, 4vw, 3rem);
+}
+
+.preloader-pct {
+  right: clamp(1.25rem, 4vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5ch;
+  text-align: right;
+}
+
+.preloader-mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+}
+
+.preloader-blade {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(247, 248, 250, 0.35);
+  border-radius: 50%;
+  animation: preloaderSpin 2.4s linear infinite;
+}
+
+.preloader-blade::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3d8b84;
+  transform: translateX(-50%);
+  box-shadow: 0 0 16px rgba(61, 139, 132, 0.7);
+}
+
+.preloader-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 1.05rem;
+}
+
+@keyframes preloaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .preloader-label,
+  .preloader-pct {
+    top: auto;
+    bottom: 2rem;
+    transform: none;
+  }
+}

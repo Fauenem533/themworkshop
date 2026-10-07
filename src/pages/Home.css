@@ -164,16 +164,18 @@
 
 .hero-scroll {
   position: absolute;
-  right: clamp(1.25rem, 4vw, 3rem);
+  left: 50%;
   bottom: 2rem;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(247, 248, 250, 0.7);
+  transform: translateX(-50%);
 }
 
 .hero-scroll span {
@@ -248,8 +250,9 @@
 
 .brand-visual img {
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: cover;
+  will-change: transform;
 }
 
 .site-footer {

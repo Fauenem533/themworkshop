@@ -31,7 +31,11 @@ export function ProductCard({ product, index }: Props) {
       }}
       whileHover={{ y: -8 }}
     >
-      <Link to={`/produkt/${product.id}`} className="product-card-link">
+      <Link
+        to={`/produkt/${product.id}`}
+        className="product-card-link cursor-grow"
+        data-cursor="View"
+      >
         <div className="product-card-media">
           {sale && (
             <motion.span

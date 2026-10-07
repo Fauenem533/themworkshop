@@ -1,0 +1,96 @@
+.payments {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.payment-option {
+  display: grid;
+  grid-template-columns: 36px 1fr 16px;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.7);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.payment-option.is-selected {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.payment-copy {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.payment-copy strong {
+  font-size: 0.95rem;
+}
+
+.payment-copy small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.payment-check {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+}
+
+.payment-option.is-selected .payment-check {
+  border-color: var(--accent);
+  background: radial-gradient(circle, var(--accent) 45%, transparent 48%);
+}
+
+.payment-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.payment-icon--blik {
+  background: linear-gradient(135deg, #000, #333);
+}
+
+.payment-icon--card {
+  background: linear-gradient(135deg, #1a3a6b, #4a7fd4);
+}
+
+.payment-icon--apple {
+  background: linear-gradient(135deg, #111, #444);
+}
+
+.payment-icon--google {
+  background: linear-gradient(135deg, #4285f4, #34a853 50%, #fbbc05 75%, #ea4335);
+}
+
+.payment-icon--paypal {
+  background: linear-gradient(135deg, #003087, #009cde);
+}
+
+.payment-icon--przelewy24 {
+  background: linear-gradient(135deg, #d32f2f, #f57c00);
+}
+
+.payment-icon--payu {
+  background: linear-gradient(135deg, #a6c307, #6b8e00);
+}
+
+.payment-icon--klarna {
+  background: linear-gradient(135deg, #ffb3c7, #ffa0c0);
+}
+
+.payment-icon--stripe {
+  background: linear-gradient(135deg, #635bff, #0a2540);
+}

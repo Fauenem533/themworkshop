@@ -1,0 +1,64 @@
+.sale-page {
+  padding-bottom: 5rem;
+}
+
+.sale-hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 3rem) 1.5rem 3rem;
+  text-align: center;
+  background:
+    radial-gradient(700px 320px at 50% 0%, rgba(255, 59, 48, 0.22), transparent 60%),
+    linear-gradient(180deg, #1a1212 0%, #2a1717 40%, var(--bg) 100%);
+  color: #fff;
+}
+
+.sale-hero-glow {
+  position: absolute;
+  inset: auto 20% -40% 20%;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 59, 48, 0.35), transparent 70%);
+  filter: blur(30px);
+  animation: glowDrift 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translateX(-4%) scale(1);
+  }
+  to {
+    transform: translateX(4%) scale(1.08);
+  }
+}
+
+.sale-eyebrow {
+  color: #ff8a80;
+  position: relative;
+}
+
+.sale-title {
+  position: relative;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  color: #ff3b30;
+  text-shadow: 0 10px 40px rgba(255, 59, 48, 0.35);
+  margin: 0.4rem 0 0.9rem;
+  letter-spacing: -0.04em;
+}
+
+.sale-lead {
+  position: relative;
+  max-width: 28rem;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+}
+
+.sale-grid-wrap {
+  margin-top: 2.5rem;
+}
+
+.sale-empty {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 3rem 1rem;
+}

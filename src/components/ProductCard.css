@@ -31,9 +31,9 @@
   min-height: 2rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: #ff3b30;
+  background: var(--accent);
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
 }
@@ -74,6 +74,6 @@
 }
 
 .product-card-price.is-sale-price {
-  color: #ff3b30;
+  color: var(--accent);
   font-size: 1.15rem;
 }

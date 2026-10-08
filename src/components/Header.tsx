@@ -15,13 +15,9 @@ const navItems = [
 export function Header() {
   const { count, toggle } = useCart()
   const { pathname } = useLocation()
-  const solid = pathname !== '/'
-  const onHero = pathname === '/'
 
   return (
-    <header
-      className={`site-header ${solid ? 'is-solid' : ''} ${onHero ? 'on-hero' : ''}`}
-    >
+    <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand" aria-label="themworkshop — strona główna">
           <span className="brand-mark" aria-hidden />

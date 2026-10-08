@@ -73,7 +73,7 @@
 }
 
 .hero-cta .btn-primary {
-  background: #f7f8fa;
+  background: #f7faf9;
   color: var(--ink);
 }
 
@@ -83,25 +83,23 @@
 }
 
 .hero-cta .btn-ghost {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.28);
   color: #fff;
 }
 
 .hero-cta .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .hero-cta .btn-sale {
-  background: #ff3b30;
-  color: #fff;
+  background: var(--accent);
+  color: #f7faf9;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
 }
 
 .hero-cta .btn-sale:hover {
-  background: #ff5248;
+  background: var(--accent-soft);
 }
 
 .section {

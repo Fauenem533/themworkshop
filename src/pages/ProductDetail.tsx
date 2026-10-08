@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { MagneticButton } from '../components/MagneticButton'
 import { PageTransition } from '../components/PageTransition'
 import { useCart } from '../context/CartContext'
@@ -15,6 +15,7 @@ import './ProductDetail.css'
 
 export function ProductDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { getById } = useProducts()
   const product = getById(id ?? '')
   const { add } = useCart()
@@ -40,6 +41,11 @@ export function ProductDetail() {
     add(product!)
     setAdded(true)
     window.setTimeout(() => setAdded(false), 1800)
+  }
+
+  function handleBuyNow() {
+    add(product!, { openDrawer: false })
+    navigate('/checkout')
   }
 
   return (
@@ -110,9 +116,9 @@ export function ProductDetail() {
               <MagneticButton className="btn btn-primary" onClick={handleAdd}>
                 {added ? 'Dodano do koszyka' : 'Dodaj do koszyka'}
               </MagneticButton>
-              <Link to="/checkout" className="btn btn-ghost">
-                Zamów teraz
-              </Link>
+              <MagneticButton className="btn btn-accent" onClick={handleBuyNow}>
+                Kup teraz
+              </MagneticButton>
             </div>
 
             <ul className="specs">
